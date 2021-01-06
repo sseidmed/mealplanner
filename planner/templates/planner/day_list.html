@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Day List</h1>
+
+    {% if day_list %}
+    <div class="meal-box">
+        
+            {% for day in day_list %}
+                
+                    <div class="meal">
+                        <p>{{ day.get_day_of_week_display }}, {{ day.date_meal }}</p>
+                        {% for meal in day.meal.all %}
+                            <p>{{ meal }}</p>
+                        {% endfor %}
+                        <a href="{{ day.get_absolute_url }}">
+                            <button type="button" class="btn btn-info">See More</button>
+                        </a>
+                    </div>
+                
+            {% endfor %}
+     
+    </div>
+    {% else %}
+        <p>There are no days added yet.</p>
+    {% endif %}
+
+{% endblock %}

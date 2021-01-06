@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Meal Details</h1>
+
+    <p><strong>Meal:</strong> {{ meal }}</p>
+    <p>{{ meal.ingredients }}</p>
+    <p>{{ meal.get_meal_type_display }}</p>
+    <p>You cooked this meal {{ meal.day_set.all.count }} time(s)  </p>
+    <a href="{% url 'meal-update' meal.pk %}"><button type="button" class="btn btn-info">Edit Meal</button></a>
+    <a href="{% url 'meal-delete' meal.pk %}"><button type="button" class="btn btn-danger">Delete Meal</button></a>
+
+
+    
+{% endblock %}
