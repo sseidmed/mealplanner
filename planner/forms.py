@@ -9,8 +9,7 @@ class DayForm(forms.ModelForm):
         model = Day
         fields = ['day_of_week', 'date_meal', 'meal']  
         meal= forms.ModelChoiceField(
-            queryset = Meal.objects.all(), 
-            initial = 0
+            queryset = Meal.objects.all()
         )
 
     
