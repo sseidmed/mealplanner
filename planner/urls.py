@@ -8,7 +8,7 @@ urlpatterns = [
     path('meals/', views.MealListView.as_view(), name='meals'),
     path('meal/<int:pk>', views.MealDetailView.as_view(), name='meal-detail'),
 
-    path('day/create/', views.DayCreate.as_view(), name='day-create'),
+    path('day/create/', views.createday, name='day-create'),
     path('day/<int:pk>/update/', views.DayUpdate.as_view(), name='day-update'),
     path('day/<int:pk>/delete/', views.DayDelete.as_view(), name='day-delete'),
 
