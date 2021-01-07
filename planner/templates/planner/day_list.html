@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<h1>Day List</h1>
+<h1>This week's meal plan</h1>
 
     {% if day_list %}
-    <div class="meal-box">
+    <div class="day-box">
         
             {% for day in day_list %}
                 
-                    <div class="meal">
+                    <div class="day">
                         <p>{{ day.get_day_of_week_display }}, {{ day.date_meal }}</p>
                         {% for meal in day.meal.all %}
                             <p>{{ meal }}</p>
@@ -17,6 +17,7 @@
                         <a href="{{ day.get_absolute_url }}">
                             <button type="button" class="btn btn-info">See More</button>
                         </a>
+                        <a href="{% url 'day-delete' day.pk %}"><button type="button" class="btn btn-danger">Delete Day</button></a>
                     </div>
                 
             {% endfor %}

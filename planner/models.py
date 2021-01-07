@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Meal(models.Model):
     name = models.CharField(max_length=200)
-    ingredients = models.CharField(max_length=500)
+    ingredients = models.TextField()
     
 
     MEALS = (
@@ -17,8 +17,6 @@ class Meal(models.Model):
         help_text = 'Select the type of meal'
     )
 
-    
-
     def __str__(self):
         return self.name
 
@@ -27,6 +25,8 @@ class Meal(models.Model):
 
 
 class Day(models.Model):
+    date_meal = models.DateField()
+
     DAYS = (
         ('m', 'Monday'),
         ('t', 'Tuesday'),
@@ -43,14 +43,13 @@ class Day(models.Model):
         help_text = 'Day of the Week',
     )
 
-    date_meal = models.DateField()
     meal = models.ManyToManyField(Meal, help_text="Choose meal for the day")
     cook = models.ForeignKey(User,on_delete=models.SET_NULL, null=True, blank=True, related_name='meals')
     class Meta:
         ordering = ['date_meal']
 
     def __str__(self):
-        return f'{self.day_of_week}, {self.date_meal}'
+        return f'{self.date_meal}, {self.day_of_week}'
 
     def get_absolute_url(self):
         return reverse('day-detail', args=[str(self.id)])

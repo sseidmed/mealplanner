@@ -23,6 +23,7 @@
           {% if user.is_authenticated %}
             <li>Cook: {{ user.get_username }}</li>
             <li><a href="{% url 'day-create' %}">Add a Day</a></li>
+            <li><a href="{% url 'meal-create' %}">Add a Meal</a></li>
             <li><a href="{% url 'logout' %}?next={{request.path}}">Logout</a></li>
           {% else %}
             <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
@@ -35,8 +36,6 @@
 
       <div class="col-sm-10">
         {% block content %} {% endblock %}
-
-
 
       </div>
     </div>

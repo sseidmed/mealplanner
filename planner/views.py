@@ -63,7 +63,7 @@ def createday(request):
 
 class DayUpdate(LoginRequiredMixin, UpdateView):
     model = Day
-    fields = ['day_of_week', 'date_meal', 'meal']
+    fields = ['date_meal', 'day_of_week', 'meal']
 
 class DayDelete(LoginRequiredMixin, DeleteView):
     model = Day

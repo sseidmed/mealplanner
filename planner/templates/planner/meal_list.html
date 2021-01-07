@@ -5,13 +5,13 @@
 <h1>Meal List</h1>
 
     {% if meal_list %}
-        <ul>
+        <div class="meal-container">
             {% for meal in meal_list %}
-                <li>
-                    <a href="{{ meal.get_absolute_url }}">{{ meal }}</a>
-                </li>
+                
+                    <a class="meal-info" href="{{ meal.get_absolute_url }}">{{ meal }}</a>
+                
             {% endfor %}
-        </ul>
+        </div>
     {% else %}
         <p>There are no meals added yet.</p>
     {% endif %}
