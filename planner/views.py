@@ -23,6 +23,7 @@ def index(request):
 
 class DayListView(LoginRequiredMixin, generic.ListView):
     model = Day
+    paginate_by = 7
 
     def get_queryset(self):
       day_list = Day.objects.filter(cook=self.request.user)
@@ -35,6 +36,7 @@ class DayDetailView(LoginRequiredMixin, generic.DetailView):
 # show all meals that this cook assigned to particular days on her calendar
 class MealListView(LoginRequiredMixin, generic.ListView):
     model = Meal
+    paginate_by = 10
 
 class MealDetailView(LoginRequiredMixin, generic.DetailView):
     model = Meal
