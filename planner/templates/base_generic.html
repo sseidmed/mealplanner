@@ -10,31 +10,27 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-2">
+  <div class="main-container">
       {% block sidebar %}
-        <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'days' %}">My Meal Plan</a></li>
-          <li><a href="{% url 'meals' %}">All Meals</a></li>
+        <div class="sidebar-nav">
+          <a class="sidebar-links" href="{% url 'index' %}">Home</a>
+          <a class="sidebar-links" href="{% url 'days' %}">My Meal Plan</a>
+          <a class="sidebar-links" href="{% url 'meals' %}">All Meals</a>
           <hr>
           
           {% if user.is_authenticated %}
-            <li>Cook: {{ user.get_username }}</li>
-            <li><a href="{% url 'day-create' %}">Add a Day</a></li>
-            <li><a href="{% url 'meal-create' %}">Add a Meal</a></li>
-            <li><a href="{% url 'logout' %}?next={{request.path}}">Logout</a></li>
+            Cook: {{ user.get_username }}
+            <a class="sidebar-links" href="{% url 'day-create' %}">Add a Day</a>
+            <a class="sidebar-links" href="{% url 'meal-create' %}">Add a Meal</a>
+            <a class="sidebar-links" href="{% url 'logout' %}?next={{request.path}}">Logout</a>
           {% else %}
-            <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
+            <a class="sidebar-links" href="{% url 'login' %}?next={{request.path}}">Login</a>
           {% endif %}
         </ul>
-      
-
      {% endblock %}
       </div>
 
-      <div class="col-sm-10">
+      <div class="content">
         {% block content %} {% endblock %}
 
         {% block pagination %}
@@ -54,10 +50,7 @@
             </div>
         {% endif %}
     {% endblock %} 
-
-
       </div>
-    </div>
   </div>
 </body>
 </html>

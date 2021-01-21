@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
 class Meal(models.Model):
     name = models.CharField(max_length=200)
     ingredients = models.TextField()
@@ -16,6 +17,8 @@ class Meal(models.Model):
         choices = MEALS,
         help_text = 'Select the type of meal'
     )
+
+    meal_pic = models.FileField()
 
     def __str__(self):
         return self.name

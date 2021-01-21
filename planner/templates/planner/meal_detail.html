@@ -2,7 +2,8 @@
 
 {% block content %}
     <h1>Meal Details</h1>
-
+    
+    <img src="{{ meal.meal_pic.url }}" class="img-responsive">
     <p><strong>Meal:</strong> {{ meal }}</p>
     <p>{{ meal.ingredients }}</p>
     <p>{{ meal.get_meal_type_display }}</p>

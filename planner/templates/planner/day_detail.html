@@ -2,13 +2,19 @@
 
 {% block content %}
     <h1>Day Detail</h1>
-    <h3>{{ day.get_day_of_week_display }}, {{ day.date_meal }}</h3>
-    {% for meal in day.meal.all %}
-        <p><a href="{% url 'meal-detail' meal.pk %}">{{ meal }}</a></p>
-    {% endfor %}
-    <p>{{ day.meal.ingredients }}</p>
-    <p>{{ day.meal.get_meal_type_display }}</p>
-    <a href="{% url 'day-update' day.pk %}"><button type="button" class="btn btn-info">Edit Day</button></a>
-    <a href="{% url 'day-delete' day.pk %}"><button type="button" class="btn btn-danger">Delete Day</button></a>
+    <div class='day-detail-content'>
+
+    
+        <h3>{{ day.get_day_of_week_display }}, {{ day.date_meal }}</h3>
+        {% for meal in day.meal.all %}
+            <img class="img-detail" src="{{ meal.meal_pic.url }}" class="img-responsive">
+            <p><a href="{% url 'meal-detail' meal.pk %}">{{ meal }}</a></p>
+            <p>{{ meal.ingredients }}</p>
+            <p>{{ meal.get_meal_type_display }}</p>
+        {% endfor %}
+
+        <a href="{% url 'day-update' day.pk %}"><button type="button" class="btn btn-info">Edit Day</button></a>
+        <a href="{% url 'day-delete' day.pk %}"><button type="button" class="btn btn-danger">Delete Day</button></a>
+    </div>
 
 {% endblock %}

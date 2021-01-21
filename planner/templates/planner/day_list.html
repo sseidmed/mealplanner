@@ -5,19 +5,24 @@
 <h1>This week's meal plan</h1>
 
     {% if day_list %}
-    <div class="day-box">
+    <div class="days-box">
         
             {% for day in day_list %}
                 
-                    <div class="day">
-                        <p>{{ day.get_day_of_week_display }}, {{ day.date_meal }}</p>
+                    <div class="single-day">
                         {% for meal in day.meal.all %}
+                            <img src="{{ meal.meal_pic.url }}" class="img-responsive">
                             <p>{{ meal }}</p>
                         {% endfor %}
-                        <a href="{{ day.get_absolute_url }}">
-                            <button type="button" class="btn btn-info">See More</button>
-                        </a>
-                        <a href="{% url 'day-delete' day.pk %}"><button type="button" class="btn btn-danger">Delete Day</button></a>
+                        
+                        <p>{{ day.get_day_of_week_display }}, {{ day.date_meal }}</p>
+
+                        <div class="buttons">
+                                <a href="{{ day.get_absolute_url }}">
+                                    <button type="button" class="btn btn-info">See More</button>
+                                </a>
+                                <a href="{% url 'day-delete' day.pk %}"><button type="button" class="btn btn-danger">Delete Day</button></a>
+                        </div>
                     </div>
                 
             {% endfor %}

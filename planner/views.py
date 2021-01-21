@@ -74,11 +74,11 @@ class DayDelete(LoginRequiredMixin, DeleteView):
 # CRUD for Meal model
 class MealCreate(LoginRequiredMixin, CreateView):
     model = Meal
-    fields = ['name', 'ingredients', 'meal_type']
+    fields = ['name', 'ingredients', 'meal_type', 'meal_pic']
 
 class MealUpdate(LoginRequiredMixin, UpdateView):
     model = Meal
-    fields = ['name', 'ingredients', 'meal_type']
+    fields = ['name', 'ingredients', 'meal_type', 'meal_pic']
 
 class MealDelete(LoginRequiredMixin, DeleteView):
     model = Meal

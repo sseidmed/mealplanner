@@ -7,8 +7,11 @@
     {% if meal_list %}
         <div class="meal-container">
             {% for meal in meal_list %}
-                
-                    <a class="meal-info" href="{{ meal.get_absolute_url }}">{{ meal }}</a>
+
+                    <a class="meal-info" href="{{ meal.get_absolute_url }}">
+                        <img src="{{ meal.meal_pic.url }}" class="img-responsive">
+                        {{ meal }}
+                    </a>
                 
             {% endfor %}
         </div>

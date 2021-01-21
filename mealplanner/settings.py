@@ -132,3 +132,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 BOOTSTRAP4 = {
     'include_jquery': True,
 }
+
+STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
